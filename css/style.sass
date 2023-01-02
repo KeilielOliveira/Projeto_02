@@ -21,6 +21,8 @@ html,body
 
 nav.menu-desktop
     min-height: 80px
+    min-width: 100%
+    z-index: 6
     background-color: #0f0f0f
     padding: 15px 30px
     div.logo
@@ -46,29 +48,38 @@ nav.menu-desktop
                 color: #4d4b4b
 
     ul.ul-menu-mobile
+        z-index: 5
         display: none
         text-align: center
+        position: fixed
+        top: 80px
+        margin: 0
+        background-color: #1f1f1f 
+        left: 0
+        width: 100%
         li
-            border-bottom: 1px solid #ccc
+            border-bottom: 0.5px solid #ccc
             padding-top: 8px
             a
                 color: #fff
                 text-decoration: none
                 font-size: 20px
         li:hover
-            background-color: #4a4a4a
+            background-color: #706d6d
             a
                 color: #0f0f0f
 
     div.menu-icon
         display: none
-        background-image: url("../images/menu_mobile.png")
         width: 30px
         height: 30px
         background-size: cover
         cursor: pointer
         float: right
         margin-top: 12px
+        .icon
+            font-size: 30px
+            color: #ffff
 
 
                 
@@ -332,16 +343,19 @@ footer
             font-weight: lighter    
 
 
-/******************MIDIA QUERY*******************/
+/******************MEDIA QUERY*******************/
 
 
 
 @media screen and (max-width: 900px) 
     nav.menu-desktop
+        position: fixed
+        top: 0
+        left: 0
         ul.ul-menu-desktop
             display: none
         div.menu-icon
-            display: inline
+            display: block
     section.banner 
         div.content-banner
             padding-left: 0

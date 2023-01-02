@@ -5,6 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9513630920.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
 
 
 <nav class="menu-desktop">
-    <div class="container">
+
         <div class="logo">
             <h2>Logomarca</h2>
         </div><!--logo-->
@@ -23,17 +24,15 @@
             <li><a href="">Sobre</a></li>
             <li><a href="">Contato</a></li>
         </ul><!--ul-menu-desktop-->  
-        <div class="menu-icon"></div> 
+        <div class="menu-icon"><i class="fa-solid fa-bars icon"></i></div>
         <ul class="ul-menu-mobile">
             <li><a href="">Home</a></li>
             <li><a href="">Sobre</a></li>
             <li><a href="">Contato</a></li>
         </ul><!--ul-menu-mobile--> 
-    </div>
+
 </nav><!--menu-desktop-->
 <div class="clear"></div>
-
-<div class="kkk"></div>
 
 <section class="banner">
         <div class="bg-cover">
