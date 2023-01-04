@@ -148,8 +148,8 @@
 </footer>
 
 
-<script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/javascript.js"></script>
+<script src="<?php echo include_path ?>js/jquery-3.6.0.min.js"></script>
+<script src="<?php echo include_path ?>js/javascript.js"></script>
 
 </body>
 </html>

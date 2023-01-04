@@ -111,12 +111,16 @@ textarea:focus {
     outline: none;
 }
 
+form.send-form {
+    width: 100%;
+}
+
 .send {
     font-size: 18px;
     color: #3b2a3b;
     width: 180px;
     height: 35px;
-    margin-left: calc(50% - 180px);
+    margin: 0 auto;
     margin-top: 20px;
     background-color: rgb(218, 213, 213);
     cursor: pointer;
