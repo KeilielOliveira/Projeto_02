@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+.clear {clear: both;}
+
+html,body {
+    height: 100%;
+    background-color: #e5e5e2;
+}
+
+header {
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    text-align: center;
+    padding: 5px 0;
+}
+
+header h2 {
+    font-size: 18px;
+    color: #2a2a2a;
+    font-weight: lighter;
+}
+
+.box-edit {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 50px;
+    padding: 15px 2%;
+}
+
+.title {
+    margin-bottom: 18px;
+}
+
+.title h3,.title i {
+    display: inline-block;
+}
+
+.title h3 {
+    font-size: 18px;
+    color: #3b2a3b;
+    font-weight: normal;
+    margin-left: 4px;
+}
+
+.title i {
+    font-size: 18px;
+    color: #3b2a3b;
+}
+
+.box-edit form label{
+    display: block;
+    font-size: 16px;
+    color: #2b2b2b;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.box-edit form input {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    padding: 6px 0;
+    padding-left: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+}
+
+.box-edit form input:focus {
+    outline: none;
+}
+
+div.item {
+    height: 40px;
+    border: 1px solid rgb(67, 66, 66);
+    padding: 7px 0;
+    padding-left: 5px;
+}
+
+div.item p,div.item a {
+    display: inline-block;
+    width: 20%;
+}
+
+.content h3 {
+    text-align: center;
+    font-size: 16px;
+    color: rgb(67, 66, 66);
+    font-weight: normal;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+    padding-top: 5px;
+    min-height: 80px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+.send {
+    font-size: 18px;
+    color: #3b2a3b;
+    width: 180px;
+    height: 35px;
+    margin-left: calc(50% - 180px);
+    margin-top: 20px;
+    background-color: rgb(218, 213, 213);
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+.send:hover {
+    border: 1px solid black;
+    background-color: #2b2b2b;
+    color: #e5e5e2;
+}

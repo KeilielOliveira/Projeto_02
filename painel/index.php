@@ -18,46 +18,24 @@
         </div>
         <div class="options">
             <div class="op-sec">
-                <h2>Header</h2>
+                <h2>Home</h2>
                 <ul>
-                    <li><a href="">Adicionar item ao menu</a></li>
-                    <li><a href="">Remover item do menu</a></li>
-                    <li><a href="">Alterar item do menu</a></li>
+                    <li><a href="">Editar Home</a></li>
                 </ul>
             </div><!--op-sec--> 
-            <div class="op-sec">
-                <h2>Banner</h2>
-                <ul>
-                    <li><a href="">Modificar banner</a></li>
-                </ul>
-            </div>
-            <div class="op-sec">
-                <h2>Seção Sobre</h2>
-                <ul>
-                    <li><a href="">Alterar textos da seção sobre</a></li>
-                    <li><a href="">Alterar imagens da seção sobre</a></li>
-                    <li><a href="">Modificar seção de serviços</a></li>
-                </ul>
-            </div>
-            <div class="op-sec">
-                <h2>Seção Contato</h2>
-                <ul>
-                    <li><a href="">Alterar formulario de contato</a></li>
-                </ul>
-            </div>
-            <div class="op-sec">
-                <h2>Footer</h2>
-                <ul>
-                    <li><a href="">Alterar footer</a></li>
-                </ul>
-            </div>
         </div><!--options--> 
     </section>
 
-    <header class="haeader-painel">
+    <header class="header-painel">
         <i class="fa-solid fa-bars icon"></i>
         <p>contato.sac@gmail.com</p>
     </header>
+    <div class="clear"></div>
+    <div class="page">
+        <?php
+            include "pages/editar-home.php";
+        ?>
+   </div>
 </div><!--Display flex--> 
     
 </body>
