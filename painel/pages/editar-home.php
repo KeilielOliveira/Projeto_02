@@ -113,17 +113,14 @@
 
 <?php 
 
-if(isset($_POST['send_1'])) {
-    $info = Painel::selecionarTabela('tb_admin.editar_menu','*','');
-    print_r($info);
-    if($_POST['logo'] != '') {
-        if($info['logo_text'] == '') {
-            $sql = MySql::connect()->prepare("INSERT IN TO `tb_admin.editar_menu` (logo_text,logo_image) VALUE ?,? ");
-            $sql->execute(array($_POST['logo'],''));
-        }else if($info['logo_image'] == '') {
-            //Por hora não o farei.
-        }
+$info = Painel::selecionarTabela('tb_admin.editar_menu','','');
+if(@isset($_POST['send_1'])) {
+    if(@$info['logo_text'] == null) {
+        Painel::inserir(array($_POST['logo'],$_POST['logo_image']),'tb_admin.editar_menu','');
+    }else {
+        Painel::atualizar(array($_POST['logo'],$_POST['logo_image']),'tb_admin.editar_menu',array('logo_text','logo_image'));
     }
 }
+
 
 ?>
