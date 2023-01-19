@@ -1,1 +1,2 @@
-Arrumar o redirect para fechar o alerta do "warning".
+Lista:
+1° -> Redirect na pagina no painel para atualizar os itens.

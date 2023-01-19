@@ -22,21 +22,20 @@ class Painel {
 
     public static function warning($arr) {
         $msg = $arr['msg'];
+        if(isset($arr['script'])) {
+            echo $arr['script'];
+        }
         if($arr['tipo'] == 'erro') {
             echo '<div class="warning err"/>'.$msg.'<i class="fa-solid close fa-xmark"></i></div>';
         }else if($arr['tipo'] == 'sucesso') {
             echo '<div class="warning sucess"/>'.$msg.'<i class="fa-solid close fa-xmark"></i></div>';
         }
+
     }
 
     //Redireciona para uma pagina.
     public static function redirect($url) {
-        echo '
-        <script>
-        $(".close").click(()=> {
-            location.hred="'.$url.'"
-        })
-        </script>' ;
+        echo '<script>location.hred="'.$url.'"</script>' ;
         die();
     }
 
@@ -64,13 +63,13 @@ class Painel {
         return $return;
     }
 
-    public static function atualizar($arr) {
+    public static function atualizar($arr,$excep) {
         $return = true;
         $verifi = false;
         $tb = $arr['tb'];
-        $query = "UPDATE `tb` SET ";
+        $query = "UPDATE `$tb` SET ";
         foreach ($arr as $key => $value) {
-            if($key == 'tb' || $key == 'id' || $key == 'send') {
+            if($key == 'tb' || $key == 'id' || $key == $excep) {
                 continue;
             }
             if($value == '') {
@@ -83,10 +82,11 @@ class Painel {
             }else {
                 $query.=",$key=?";
             }
-            $par = $value;
+            $par[] = $value;
         }
         if($return == true) {
             $par[] = $arr['id'];
+            //print_r($par);
             echo $query;
             $sql = MySql::connect()->prepare($query."WHERE id=?");
             $sql->execute($par);

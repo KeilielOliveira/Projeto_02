@@ -25,7 +25,7 @@
         <div class="content">
             <form class="send-form" method="post">
                 <label>Logomarca</label>
-                <input type="text" name="logo" placeholder="Logomarca em forma de Texto...">
+                <input type="text" name="logo_text" placeholder="Logomarca em forma de Texto...">
                 <input type="file" name="logo_image">
                 <input type="hidden" name="logo_image_default" value="logomarca_image">
                 <br>
@@ -119,9 +119,9 @@ if(isset($_POST['send_1'])) {
     if($info == '') {
         $val = [];
         if($_POST['logo_image'] == '') {
-            $val = [$_POST['logo'],$_POST['logo_image_default']];
+            $val = [$_POST['logo_text'],$_POST['logo_image_default']];
         }else {
-            $val = [$_POST['logo'],$_POST['logo_image']];
+            $val = [$_POST['logo_text'],$_POST['logo_image']];
         }
         $arr = ['tb'=>'tb_admin.editar_menu','val'=>$val];
         if(Painel::inserir($arr,'send_1')) {
@@ -129,8 +129,16 @@ if(isset($_POST['send_1'])) {
         }else {
             Painel::warning(['tipo'=>'erro','msg'=>'Algo deu errado!Verifique os valores e tente novamente.']);
         }
-        Painel::redirect('?editar-home.php');
+    }else {
 
+        if($_POST['logo_image'] == '') {
+            $_POST['logo_image'] = $_POST['logo_image_default'];
+        }
+        $val = $_POST;
+        $arr = ['tb'=>'tb_admin.editar_menu','logo_text'=>$_POST['logo_text'],'logo_image'=>$_POST['logo_image'],'id'=>'1'];
+        if(Painel::atualizar($arr,'send_1')) {
+            Painel::warning(['tipo'=>'sucesso','msg'=>'Tabela atualizada com sucesso!']);
+        }
     }
 }
 
