@@ -16,16 +16,18 @@
         <h2>Bem vindo a pagina de <b>edição</b> da home!</h2>
     </header>
 
+
     <div class="box-edit">
         <div class="title">
             <i class="fa-solid fa-pen"></i>
             <h3>Editar Header</h3>
         </div>
         <div class="content">
-            <form method="post" class="send-form">
+            <form class="send-form" method="post">
                 <label>Logomarca</label>
                 <input type="text" name="logo" placeholder="Logomarca em forma de Texto...">
                 <input type="file" name="logo_image">
+                <input type="hidden" name="logo_image_default" value="logomarca_image">
                 <br>
                 <br>
                 <h3>Itens do menu</h3>
@@ -36,8 +38,8 @@
                     <a href=""><i class="fa-solid fa-pen">  Editar</i></a>
                     <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
                 </div>
-                <input type="submit" name="send_1" value="send" class="send">
-            </form>
+                <input type="submit" value="Enviar" class="send" name="send_1">
+            </form> 
         </div>
     </div>
 
@@ -47,15 +49,14 @@
             <h3>Editar Banner</h3>
         </div>
         <div class="content">
-            <form method="post" class="send-form">
+            <form class="send-form" method="post">
                 <label>Imagem do banner</label>
                 <input type="file" name="banner_image">
                 <label>Titulo da chamada</label>
                 <input type="text" name="title_banner">
                 <label>Conteudo da chamada</label>
                 <input type="text" name="content-banner">
-
-                <input type="submit" name="send_2" value="send" class="send">
+                <input type="submit" value="Enviar" class="send" name="send_2">
             </form>
         </div>
         
@@ -67,7 +68,7 @@
             <h3>Editar Sobre</h3>
         </div>
         <div class="content">
-            <form method="post" class="send-form">
+            <form class="send-form" method="post">
                 <label>Texto inicial do sobre</label>
                 <textarea name="first_text_sobre"></textarea>
                 <label>Texto é imagem do sobre</label>
@@ -102,25 +103,38 @@
                 <a href=""><i class="fa-solid fa-pen">  Editar</i></a>
                 <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
             </div>
-
-                <input type="submit" name="send_3" value="send" class="send">
-            </form>
+            <input type="submit" class="send" value="Enviar" name="send_3">
+            </form>         
         </div>
     </div>
 
+    <script src="<?php echo include_path_painel ?>script/jquery.js"></script>
 </body>
 </html>
 
 <?php 
 
-$info = Painel::selecionarTabela('tb_admin.editar_menu','','');
-if(@isset($_POST['send_1'])) {
-    if(@$info['logo_text'] == null) {
-        Painel::inserir(array($_POST['logo'],$_POST['logo_image']),'tb_admin.editar_menu','');
-    }else {
-        Painel::atualizar(array($_POST['logo'],$_POST['logo_image']),'tb_admin.editar_menu',array('logo_text','logo_image'));
+if(isset($_POST['send_1'])) {
+    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu','nome'=>'','condition'=>'']);
+    if($info == '') {
+        $val = [];
+        if($_POST['logo_image'] == '') {
+            $val = [$_POST['logo'],$_POST['logo_image_default']];
+        }else {
+            $val = [$_POST['logo'],$_POST['logo_image']];
+        }
+        $arr = ['tb'=>'tb_admin.editar_menu','val'=>$val];
+        if(Painel::inserir($arr,'send_1')) {
+            Painel::warning(['tipo'=>'sucesso','msg'=>'Valores inseridos com sucesso!']);
+        }else {
+            Painel::warning(['tipo'=>'erro','msg'=>'Algo deu errado!Verifique os valores e tente novamente.']);
+        }
+        Painel::redirect('?editar-home.php');
+
     }
 }
+
+
 
 
 ?>
