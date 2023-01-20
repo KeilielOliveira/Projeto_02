@@ -25,6 +25,7 @@
                 <ul>
                     <li><a href="<?php echo include_path_painel?>?editar-home">Editar Home</a></li>
                 </ul>
+                <a href="?loggout">loggout</a>
             </div><!--op-sec--> 
         </div><!--options--> 
     </section>
@@ -43,3 +44,12 @@
     
 </body>
 </html>
+
+<?php 
+
+if(isset($_GET['loggout'])) {
+    session_destroy();
+    die();
+}
+
+?>

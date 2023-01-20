@@ -88,6 +88,11 @@ class Painel {
         }
         return $return;
     }
+
+    
+    public static function login() {
+        return isset($_SESSION['logado']) ? true : false;
+    }
 }
 
 ?>

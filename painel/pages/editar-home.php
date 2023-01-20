@@ -28,16 +28,7 @@
                 <input type="text" name="logo_text" placeholder="Logomarca em forma de Texto...">
                 <input type="file" name="logo_image">
                 <input type="hidden" name="logo_image_default" value="logomarca_image">
-                <br>
-                <br>
-                <h3>Itens do menu</h3>
-                <br>
-                <div class="item">
-                    <p>Name</p>
-                    <p>link</p>
-                    <a href=""><i class="fa-solid fa-pen">  Editar</i></a>
-                    <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
-                </div>
+
                 <input type="submit" value="Enviar" class="send" name="send_1">
             </form> 
         </div>
