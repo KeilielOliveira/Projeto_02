@@ -9,6 +9,8 @@ class Painel {
         $query = "SELECT ";
         if($name == '') {
             $query.="* ";
+        }else {
+            $query.= "$name ";
         }
         $query.= " FROM `$tb` ";
         if($condition != '') {

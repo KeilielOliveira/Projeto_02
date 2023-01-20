@@ -13,11 +13,19 @@
 </head>
 <body>
 
+<?php
+    include 'config.php';
+    $logo = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu','nome'=>'','condition'=>'']);
+    $banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner','nome'=>'','condition'=>'']);
+    $sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre','nome'=>'','condition'=>'']);
+
+?>
+
 
 <nav class="menu-desktop">
 
         <div class="logo">
-            <h2>Logomarca</h2>
+            <h2><?php echo $logo['logo_text'] ?></h2>
         </div><!--logo-->
         <ul class="ul-menu-desktop">
             <li><a href="">Home</a></li>
@@ -38,8 +46,8 @@
         <div class="bg-cover">
             <div class="container">
                 <div class="content-banner">
-                    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit</h2>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio vitae modi ullam officiis doloremque expedita</p>
+                    <h2><?php echo $banner['titulo'] ?></h2>
+                    <p><?php echo $banner['conteudo'] ?></p>
                     <div class="form-banner">
                         <form action="" class="banner">
                             <input type="email" name="email" id="" required placeholder="E-mail">
@@ -54,13 +62,12 @@
 <section class="sobre">
     <div class="container">
         <div class="content-sobre-description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non accusamus repellendus voluptatibus consequatur eaque labore alias vero id accusantium magni nemo atque, cum eius. Ex architecto cumque expedita odio facilis.</p>
+            <p><?php echo $sobre['primeiro_texto'] ?></p>
         </div><!--content-sobre-description--> 
         <div class="content-sobre">
             <div class="box-1">    
                 <div class="text-content-box-1">
-                <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ipsam ipsum sapiente delectus impedit itaque expedita labore optio. Ullam ut accusantium est expedita tempore velit sit beatae numquam! Delectus, libero.</p>
+                <h2><?php echo $sobre['segundo_texto'] ?></p>
                 </div><!--text-content-box-1--> 
                 <div class="box-1-img"><img class="box-1-img" src="images/box_1.jpg" alt="">
             </div><!--box-1-img-->     
@@ -82,7 +89,7 @@
 
 <section class="servicos">
     <div class="container">
-        <h3>Como podemos ajudar</h3>
+        <h3><?php echo $sobre['titulo_secao_trabalho'] ?></h3>
         <div class="icon-arrow"></div>
         <div class="section-servicos">
             <div class="box-servicos">
