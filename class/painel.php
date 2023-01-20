@@ -20,14 +20,11 @@ class Painel {
         return $return;
     }
 
-    public static function warning($arr) {
-        $msg = $arr['msg'];
-        if(isset($arr['script'])) {
-            echo $arr['script'];
-        }
-        if($arr['tipo'] == 'erro') {
+    public static function warning($tipo,$msg) {
+
+        if($tipo == 'erro') {
             echo '<div class="warning err"/>'.$msg.'<i class="fa-solid close fa-xmark"></i></div>';
-        }else if($arr['tipo'] == 'sucesso') {
+        }else if($tipo == 'sucesso') {
             echo '<div class="warning sucess"/>'.$msg.'<i class="fa-solid close fa-xmark"></i></div>';
         }
 
@@ -43,10 +40,9 @@ class Painel {
     public static function inserir($arr,$excep) {
         $tb = $arr['tb'];
         $return = true;
-        $val = $arr['val'];
         $query = "INSERT INTO `$tb` VALUES (null";
-        foreach ($val as $key => $value) {
-            if($key == $excep) {
+        foreach ($arr as $key => $value) {
+            if($key == $excep || $key == 'tb') {
                 continue;
             }
             if($value == '') {
@@ -54,6 +50,7 @@ class Painel {
                 break;
             }
             $query.= ",?" ;
+            $val[] = $value;
         }
         $query.= ") ";
         if($return == true) {
@@ -86,8 +83,6 @@ class Painel {
         }
         if($return == true) {
             $par[] = $arr['id'];
-            //print_r($par);
-            echo $query;
             $sql = MySql::connect()->prepare($query."WHERE id=?");
             $sql->execute($par);
         }

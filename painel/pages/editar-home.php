@@ -55,7 +55,7 @@
                 <label>Titulo da chamada</label>
                 <input type="text" name="title_banner">
                 <label>Conteudo da chamada</label>
-                <input type="text" name="content-banner">
+                <input type="text" name="content_banner">
                 <input type="submit" value="Enviar" class="send" name="send_2">
             </form>
         </div>
@@ -119,30 +119,86 @@ if(isset($_POST['send_1'])) {
     if($info == '') {
         $val = [];
         if($_POST['logo_image'] == '') {
-            $val = [$_POST['logo_text'],$_POST['logo_image_default']];
-        }else {
-            $val = [$_POST['logo_text'],$_POST['logo_image']];
+            $_POST['logo_image'] = $_POST['logo_image_default'];
         }
-        $arr = ['tb'=>'tb_admin.editar_menu','val'=>$val];
+        $arr = ['tb'=>'tb_admin.editar_menu','logo_text'=>$_POST['logo_text'],'logo_image'=>$_POST['logo_image']];
         if(Painel::inserir($arr,'send_1')) {
-            Painel::warning(['tipo'=>'sucesso','msg'=>'Valores inseridos com sucesso!']);
+            Painel::warning('sucesso','Valores inseridos com sucesso!');
         }else {
-            Painel::warning(['tipo'=>'erro','msg'=>'Algo deu errado!Verifique os valores e tente novamente.']);
+            Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente');
         }
     }else {
 
         if($_POST['logo_image'] == '') {
             $_POST['logo_image'] = $_POST['logo_image_default'];
         }
-        $val = $_POST;
         $arr = ['tb'=>'tb_admin.editar_menu','logo_text'=>$_POST['logo_text'],'logo_image'=>$_POST['logo_image'],'id'=>'1'];
         if(Painel::atualizar($arr,'send_1')) {
-            Painel::warning(['tipo'=>'sucesso','msg'=>'Tabela atualizada com sucesso!']);
+            Painel::warning('sucesso','Tabela atualizada com sucesso!');
+        }
+    }
+}else if(isset($_POST['send_2'])) {
+    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner','nome'=>'','condition'=>'']);
+    if($info == '') {
+        if($_POST['banner_image'] == '') {
+            $_POST['banner_image'] = 'image_default';
+        }
+        $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$_POST['banner_image'],'tb'=>'tb_admin.editar_banner'];
+        if(Painel::inserir($arr,'send_2')) {
+            Painel::warning('sucesso','Valores inseridos com sucesso!');
+        }else {
+            Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
+        }
+    }else {
+        if($_POST['banner_image'] == '') {
+            $_POST['banner_image'] = 'image_default';
+        }
+        $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$_POST['banner_image'],'tb'=>'tb_admin.editar_banner','id'=>'1'];
+        if(Painel::atualizar($arr,'send_2')) {
+            Painel::warning('sucesso','Tabela atualizada com sucesso!');
+        }else {
+            Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
+        }
+    }
+}else if(isset($_POST['send_3'])) {
+    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre','nome'=>'','condition'=>'']);
+    if($info == '') {
+        if($_POST['first_image_sobre'] == '') {
+            $_POST['first_image_sobre'] = 'image_default';
+        }
+        if($_POST['image_banner_sobre'] == '') {
+            $_POST['image_banner_sobre'] = 'image_default';
+        }
+        $arr = ['primeiro_texto'=>$_POST['first_text_sobre']
+        ,'segundo_texto'=>$_POST['second_text_sobre']
+        ,'imagem_do_segundo_texto'=>$_POST['first_image_sobre']
+        ,'imagem_banner'=>$_POST['image_banner_sobre']
+        ,'titulo_secao_trabalho'=>$_POST['title_work']
+        ,'tb'=>'tb_admin.editar_sobre'];
+        if(Painel::inserir($arr,'send_3')) {
+            Painel::warning('sucesso','Valores inseridos com sucesso!');
+        }else {
+            Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
+        }
+    }else {
+        if($_POST['first_image_sobre'] == '') {
+            $_POST['first_image_sobre'] = 'image_default';
+        }
+        if($_POST['image_banner_sobre'] == '') {
+            $_POST['image_banner_sobre'] = 'image_default';
+        }
+        $arr = ['primeiro_texto'=>$_POST['first_text_sobre']
+        ,'segundo_texto'=>$_POST['second_text_sobre']
+        ,'imagem_do_segundo_texto'=>$_POST['first_image_sobre']
+        ,'imagem_banner'=>$_POST['image_banner_sobre']
+        ,'titulo_secao_trabalho'=>$_POST['title_work']
+        ,'tb'=>'tb_admin.editar_sobre'
+        ,'id'=>'1'];
+        if(Painel::atualizar($arr,'send_3')) {
+            Painel::warning('sucesso','Tabela atualizada com sucesso!');
+        }else {
+            Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
     }
 }
-
-
-
-
 ?>
