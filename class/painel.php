@@ -3,20 +3,8 @@
 class Painel {
     //Seleciona itens da tabela especificada.
     public static function selecionarTabela($arr) {
-        $name = $arr['nome'];
         $tb = $arr['tb'];
-        $condition = $arr['condition'];
-        $query = "SELECT ";
-        if($name == '') {
-            $query.="* ";
-        }else {
-            $query.= "$name ";
-        }
-        $query.= " FROM `$tb` ";
-        if($condition != '') {
-            $query.= "WHERE $condition";
-        }
-        $sql = MySql::connect()->prepare($query);
+        $sql = MySql::connect()->prepare("SELECT * FROM `$tb`");
         $sql->execute();
         $return = $sql->fetch();
         return $return;

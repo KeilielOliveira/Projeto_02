@@ -11,6 +11,7 @@ spl_autoload_register(function ($class) {
 
 define("include_path","http://localhost/GitHub/Projeto_02/");
 define("include_path_painel",include_path."painel/");
+define("base_dir_painel",__DIR__.'/painel/');
 
 define("HOST",'localhost');
 define("DB",'projeto_02');

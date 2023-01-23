@@ -1,5 +1,5 @@
 <?php
-
+    $info_banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
 ?>
 
 <html>
@@ -40,9 +40,10 @@
             <h3>Editar Banner</h3>
         </div>
         <div class="content">
-            <form class="send-form" method="post">
+            <form class="send-form" method="post" enctype="multipart/form-data">
                 <label>Imagem do banner</label>
-                <input type="file" name="banner_image">
+                <input type="file" name="image">
+                <input type="hidden" name="last_image" value="<?php echo $info_banner['imagem'] ?>">
                 <label>Titulo da chamada</label>
                 <input type="text" name="title_banner">
                 <label>Conteudo da chamada</label>
@@ -106,7 +107,7 @@
 <?php 
 
 if(isset($_POST['send_1'])) {
-    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu','nome'=>'','condition'=>'']);
+    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu']);
     if($info == '') {
         $val = [];
         if($_POST['logo_image'] == '') {
@@ -129,22 +130,24 @@ if(isset($_POST['send_1'])) {
         }
     }
 }else if(isset($_POST['send_2'])) {
-    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner','nome'=>'','condition'=>'']);
+    if(@$_FILES['name'] != '') {
+        $img = $_POST['last_image'];
+    }else {
+        $img = $_FILES['image'];
+        $img = Files::uploadFile($img);
+    }
+    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
     if($info == '') {
-        if($_POST['banner_image'] == '') {
-            $_POST['banner_image'] = 'image_default';
-        }
-        $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$_POST['banner_image'],'tb'=>'tb_admin.editar_banner'];
+        $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$img,'tb'=>'tb_admin.editar_banner'];
         if(Painel::inserir($arr,'send_2')) {
             Painel::warning('sucesso','Valores inseridos com sucesso!');
         }else {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
     }else {
-        if($_POST['banner_image'] == '') {
-            $_POST['banner_image'] = 'image_default';
-        }
-        $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$_POST['banner_image'],'tb'=>'tb_admin.editar_banner','id'=>'1'];
+        $last_image = $_POST['last_image'];
+        Files::deleteFile($last_image);
+        $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$img,'tb'=>'tb_admin.editar_banner','id'=>'1'];
         if(Painel::atualizar($arr,'send_2')) {
             Painel::warning('sucesso','Tabela atualizada com sucesso!');
         }else {
@@ -152,7 +155,7 @@ if(isset($_POST['send_1'])) {
         }
     }
 }else if(isset($_POST['send_3'])) {
-    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre','nome'=>'','condition'=>'']);
+    $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
     if($info == '') {
         if($_POST['first_image_sobre'] == '') {
             $_POST['first_image_sobre'] = 'image_default';
