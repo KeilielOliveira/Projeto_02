@@ -1,5 +1,6 @@
 <?php
     $info_banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
+    $info_sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
 ?>
 
 <html>
@@ -45,9 +46,9 @@
                 <input type="file" name="image">
                 <input type="hidden" name="last_image" value="<?php echo $info_banner['imagem'] ?>">
                 <label>Titulo da chamada</label>
-                <input type="text" name="title_banner">
+                <input type="text" name="title_banner" value="<?php echo $info_banner['titulo'] ?>">
                 <label>Conteudo da chamada</label>
-                <input type="text" name="content_banner">
+                <input type="text" name="content_banner" value="<?php echo $info_banner['conteudo'] ?>">
                 <input type="submit" value="Enviar" class="send" name="send_2">
             </form>
         </div>
@@ -60,14 +61,16 @@
             <h3>Editar Sobre</h3>
         </div>
         <div class="content">
-            <form class="send-form" method="post">
+            <form class="send-form" method="post" enctype="multipart/form-data">
                 <label>Texto inicial do sobre</label>
-                <textarea name="first_text_sobre"></textarea>
+                <textarea name="first_text_sobre"><?php echo $info_sobre['primeiro_texto'] ?></textarea>
                 <label>Texto é imagem do sobre</label>
-                <textarea name="second_text_sobre"></textarea>
+                <textarea name="second_text_sobre"><?php echo $info_sobre['segundo_texto'] ?></textarea>
                 <input type="file" name="first_image_sobre">
+                <input type="hidden" name="last_first_image" value="<?php echo $info_sobre['imagem_do_segundo_texto'] ?>">
                 <label>Banner do sobre</label>
                 <input type="file" name="image_banner_sobre">
+                <input type="hidden" name="last_banner_image" value="<?php echo $info_sobre['imagem_banner'] ?>">
 
             <br>
             <br>
@@ -83,7 +86,7 @@
             <br>
 
             <label>Titulo da seçao trabalho</label>
-            <input type="text" name="title_work">
+            <input type="text" name="title_work" value="<?php echo $info_sobre['titulo_secao_trabalho'] ?>">
 
             <br>
             <br>
@@ -155,18 +158,24 @@ if(isset($_POST['send_1'])) {
         }
     }
 }else if(isset($_POST['send_3'])) {
+    $img_1 = @$_FILES['first_image_sobre'];
+    $img_2 = @$_FILES['image_banner_sobre'];
+    if($img_1['name'] == '') {
+        $img_1 = $_POST['last_first_image'];
+    }else {
+        $img_1 = Files::uploadFile($img_1);
+    }
+    if($img_2['name'] == '') {
+        $img_2 = $_POST['last_banner_image'];
+    }else {
+        $img_2 = Files::uploadFile($img_2);
+    }
     $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
     if($info == '') {
-        if($_POST['first_image_sobre'] == '') {
-            $_POST['first_image_sobre'] = 'image_default';
-        }
-        if($_POST['image_banner_sobre'] == '') {
-            $_POST['image_banner_sobre'] = 'image_default';
-        }
         $arr = ['primeiro_texto'=>$_POST['first_text_sobre']
         ,'segundo_texto'=>$_POST['second_text_sobre']
-        ,'imagem_do_segundo_texto'=>$_POST['first_image_sobre']
-        ,'imagem_banner'=>$_POST['image_banner_sobre']
+        ,'imagem_do_segundo_texto'=>$img_1
+        ,'imagem_banner'=>$img_2
         ,'titulo_secao_trabalho'=>$_POST['title_work']
         ,'tb'=>'tb_admin.editar_sobre'];
         if(Painel::inserir($arr,'send_3')) {
@@ -175,16 +184,13 @@ if(isset($_POST['send_1'])) {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
     }else {
-        if($_POST['first_image_sobre'] == '') {
-            $_POST['first_image_sobre'] = 'image_default';
-        }
-        if($_POST['image_banner_sobre'] == '') {
-            $_POST['image_banner_sobre'] = 'image_default';
-        }
+        $last_img1 = $_POST['last_first_image'];
+        $last_img2 = $_POST['last_banner_image'];
+        Files::deleteFile([$last_img1,$last_img2]);
         $arr = ['primeiro_texto'=>$_POST['first_text_sobre']
         ,'segundo_texto'=>$_POST['second_text_sobre']
-        ,'imagem_do_segundo_texto'=>$_POST['first_image_sobre']
-        ,'imagem_banner'=>$_POST['image_banner_sobre']
+        ,'imagem_do_segundo_texto'=>$img_1
+        ,'imagem_banner'=>$img_2
         ,'titulo_secao_trabalho'=>$_POST['title_work']
         ,'tb'=>'tb_admin.editar_sobre'
         ,'id'=>'1'];

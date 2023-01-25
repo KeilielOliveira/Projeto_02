@@ -15,9 +15,9 @@
 
 <?php
     include 'config.php';
-    $logo = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu','nome'=>'','condition'=>'']);
-    $banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner','nome'=>'','condition'=>'']);
-    $sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre','nome'=>'','condition'=>'']);
+    $logo = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu']);
+    $banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
+    $sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
 
 ?>
 
@@ -42,7 +42,7 @@
 </nav><!--menu-desktop-->
 <div class="clear"></div>
 
-<section class="banner">
+<section class="banner" style="background-image: url(<?php echo include_path_painel.'upload/'. $banner['imagem'] ?>);">
         <div class="bg-cover">
             <div class="container">
                 <div class="content-banner">
@@ -69,12 +69,12 @@
                 <div class="text-content-box-1">
                 <h2><?php echo $sobre['segundo_texto'] ?></p>
                 </div><!--text-content-box-1--> 
-                <div class="box-1-img"><img class="box-1-img" src="images/box_1.jpg" alt="">
+                <div class="box-1-img"><img class="box-1-img" src="<?php echo include_path_painel.'upload/'. $sobre['imagem_do_segundo_texto'] ?>" alt="">
             </div><!--box-1-img-->     
             </div><!--box-1--> 
             <div class="clear"></div>
             <div class="box-2">
-                <div class="box-2-img">               
+                <div class="box-2-img" style="background-image: url(<?php echo include_path_painel.'upload/'. $sobre['imagem_banner'] ?>);">               
                 </div><!--box-2-img--> 
                 <div class="depoimento">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis similique incidunt quidem cumque nobis qui voluptatem repudiandae deserunt nisi id voluptatibus aspernatur ipsum placeat, labore consectetur, quae ipsam amet totam?</p>

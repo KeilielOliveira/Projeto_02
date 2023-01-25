@@ -14,7 +14,13 @@ class Files {
 
 
     public static function deleteFile($file) {
-        @unlink('upload/'.$file);
+        if(is_array($file)) {
+            for ($i=0; $i < count($file); $i++) { 
+                @unlink('upload/'.$file[$i]);
+            }
+        }else {
+            @unlink('upload/'.$file);
+        }
     }
 
 }
