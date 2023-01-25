@@ -10,6 +10,14 @@ class Painel {
         return $return;
     }
 
+    //Seleciona tudo da tabela.
+    public static function selecionarTudo($tb) {
+        $sql = MySql::connect()->prepare("SELECT * FROM `$tb`");
+        $sql->execute();
+        $return = $sql->fetchAll();
+        return $return;
+    }
+
     public static function warning($tipo,$msg) {
 
         if($tipo == 'erro') {
@@ -83,6 +91,7 @@ class Painel {
     public static function login() {
         return isset($_SESSION['logado']) ? true : false;
     }
+    
 }
 
 ?>
