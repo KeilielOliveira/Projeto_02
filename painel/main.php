@@ -1,4 +1,6 @@
 <?php 
+$url = $_SERVER["REQUEST_URI"];
+$page = explode('?',$url);
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +25,7 @@
             <div class="op-sec">
                 <h2>Home</h2>
                 <ul>
-                    <li><a href="<?php echo include_path_painel?>?editar-home">Editar Home</a></li>
+                    <li><a href="<?php echo include_path_painel?>?page=editar-home">Editar Home</a></li>
                 </ul>
                 <a href="?loggout">loggout</a>
             </div><!--op-sec--> 
@@ -37,7 +39,11 @@
     <div class="clear"></div>
     <div class="page">
         <?php
-            include "pages/editar-home.php";
+        if(isset($_GET['page'])) {
+            include "pages/".$_GET['page'].".php";
+        }else {
+            include 'pages/home.php';
+        }
         ?>
    </div>
 </div><!--Display flex--> 

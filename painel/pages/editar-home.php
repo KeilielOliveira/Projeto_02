@@ -1,3 +1,5 @@
+
+
 <?php
     $info_banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
     $info_sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
@@ -84,7 +86,7 @@
             <div class="item">
                 <p><?php echo $depoimentos[$i]['nome'] ?></p>
                 <p><?php echo substr($depoimentos[$i]['conteudo'],0,20) ?></p>
-                <a href="editar-deppoimento?id=1"><i class="fa-solid fa-pen">  Editar</i></a>
+                <a href="?page=editar-depoimento&&id=<?php echo $depoimentos[$i]['id'] ?>"><i class="fa-solid fa-pen">  Editar</i></a>
                 <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
             </div>
             <?php 
@@ -136,7 +138,7 @@ if(isset($_POST['send_1'])) {
         }
         $arr = ['tb'=>'tb_admin.editar_menu','logo_text'=>$_POST['logo_text'],'logo_image'=>$_POST['logo_image'],'id'=>'1'];
         if(Painel::atualizar($arr,'send_1')) {
-            Painel::redirect(include_path_painel);
+            Painel::redirect(include_path_painel.'?sucesso');
         }
     }
 }else if(isset($_POST['send_2'])) {
@@ -146,23 +148,23 @@ if(isset($_POST['send_1'])) {
         $img = $_FILES['image'];
         $img = Files::uploadFile($img);
     }
+    $last_image = $_POST['last_image'];
     $info = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
     if($info == '') {
         $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$img,'tb'=>'tb_admin.editar_banner'];
         if(Painel::inserir($arr,'send_2')) {
-            Painel::redirect(include_path_painel);
+            Painel::redirect(include_path_painel.'?sucesso');
         }else {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
     }else {
-        $last_image = $_POST['last_image'];
         $arr = ['titulo'=>$_POST['title_banner'],'conteudo'=>$_POST['content_banner'],'imagem'=>$img,'tb'=>'tb_admin.editar_banner','id'=>'1'];
         if(Painel::atualizar($arr,'send_2')) {
-            Painel::redirect(include_path_painel);
+            Files::deleteFile($last_image);
+            Painel::redirect(include_path_painel.'?sucesso');
         }else {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
-        Files::deleteFile($last_image);
     }
 }else if(isset($_POST['send_3'])) {
     $img_1 = @$_FILES['first_image_sobre'];
@@ -186,7 +188,7 @@ if(isset($_POST['send_1'])) {
         ,'titulo_secao_trabalho'=>$_POST['title_work']
         ,'tb'=>'tb_admin.editar_sobre'];
         if(Painel::inserir($arr,'send_3')) {
-            Painel::redirect(include_path_painel);
+            Painel::redirect(include_path_painel.'?sucesso');
         }else {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
@@ -201,7 +203,7 @@ if(isset($_POST['send_1'])) {
         ,'tb'=>'tb_admin.editar_sobre'
         ,'id'=>'1'];
         if(Painel::atualizar($arr,'send_3')) {
-            Painel::redirect(include_path_painel);
+            Painel::redirect(include_path_painel.'?sucesso');
         }else {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }

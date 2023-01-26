@@ -30,7 +30,7 @@ class Painel {
 
     //Redireciona para uma pagina.
     public static function redirect($url) {
-        echo '<script>location.hred="'.$url.'"</script>' ;
+        echo '<script>location.href="'.$url.'"</script>' ;
         die();
     }
 
