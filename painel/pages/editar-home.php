@@ -102,12 +102,20 @@
             <br>
             <h3>Serviços</h3>
             <br>
+            <?php  
+                $work = Painel::selecionarTudo('tb_admin.trabalho');
+                $q = count($work);
+                for ($i=0; $i < $q; $i++) { 
+            ?>
             <div class="item">
-                <p>Title</p>
-                <p>Content</p>
-                <a href=""><i class="fa-solid fa-pen">  Editar</i></a>
+                <p><?php echo $work[$i]['titulo'] ?></p>
+                <p><?php echo substr($work[$i]['conteudo'],0,20) ?></p>
+                <a href="?page=editar-trabalho&&id=<?php echo $work[$i]['id'] ?>"><i class="fa-solid fa-pen">  Editar</i></a>
                 <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
             </div>
+            <?php  
+                }
+            ?>
             <input type="submit" class="send" value="Enviar" name="send_3">
             </form>         
         </div>
@@ -203,11 +211,11 @@ if(isset($_POST['send_1'])) {
         ,'tb'=>'tb_admin.editar_sobre'
         ,'id'=>'1'];
         if(Painel::atualizar($arr,'send_3')) {
+            Files::deleteFile([$last_img1,$last_img2]);
             Painel::redirect(include_path_painel.'?sucesso');
         }else {
             Painel::warning('erro','Algo deu errado!Verifique os valores e tente novamente.');
         }
-        Files::deleteFile([$last_img1,$last_img2]);
     }
 }
 

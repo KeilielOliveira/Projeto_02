@@ -18,6 +18,7 @@
     $logo = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu']);
     $banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
     $sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
+    $work = Painel::selecionarTudo('tb_admin.trabalho');
 
 ?>
 
@@ -92,43 +93,20 @@
         <h3><?php echo $sobre['titulo_secao_trabalho'] ?></h3>
         <div class="icon-arrow"></div>
         <div class="section-servicos">
+            <?php  
+            $q = count($work);
+            for ($i=0; $i < $q; $i++) { 
+
+            ?>
             <div class="box-servicos">
-                <div class="icon-servicos"></div>
-                <h3>lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repudiandae?</p>
+                <div class="icon-servicos" style="<?php echo include_path_painel.'upload/'.$work[$i]['icon'] ?>"></div>
+                <h3><?php echo $work[$i]['titulo'] ?></h3>
+                <p><?php echo $work[$i]['conteudo'] ?></p>
                 <button><a href="">Ver mais!</a></button>
             </div><!--box-servicos-->
-            <div class="box-servicos">
-                <div class="icon-servicos"></div>
-                <h3>lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repudiandae?</p>
-                <button><a href="">Ver mais!</a></button>
-            </div><!--box-servicos-->
-            <div class="box-servicos">
-                <div class="icon-servicos"></div>
-                <h3>lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repudiandae?</p>
-                <button><a href="">Ver mais!</a></button>
-            </div><!--box-servicos-->
-            <div class="box-servicos">
-                <div class="icon-servicos"></div>
-                <h3>lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repudiandae?</p>
-                <button><a href="">Ver mais!</a></button>
-            </div><!--box-servicos-->
-            <div class="box-servicos">
-                <div class="icon-servicos"></div>
-                <h3>lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repudiandae?</p>
-                <button><a href="">Ver mais!</a></button>
-            </div><!--box-servicos-->
-            <div class="box-servicos">
-                <div class="icon-servicos"></div>
-                <h3>lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repudiandae?</p>
-                <button><a href="">Ver mais!</a></button>
-            </div><!--box-servicos-->
-            
+            <?php 
+            }
+            ?>         
         </div><!--section-servicos--> 
     </div>
 </section><!--servicos--> 
