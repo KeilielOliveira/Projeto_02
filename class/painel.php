@@ -87,7 +87,12 @@ class Painel {
         return $return;
     }
 
-    
+    public static function deleteItemTable($tb,$id) {
+        $sql = MySql::connect()->prepare("DELETE FROM `$tb` WHERE id=$id");
+        $sql->execute();
+    }
+
+    //Verifica se o usuario é valido para o login.
     public static function login() {
         return isset($_SESSION['logado']) ? true : false;
     }

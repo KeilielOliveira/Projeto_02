@@ -1,4 +1,9 @@
-
+<?php  
+if(isset($_GET['acao'])) {
+    Painel::deleteItemTable('tb_admin.trabalho',$_GET['id']);
+    Painel::redirect(include_path_painel.'pages/'.$_GET['page']);
+}
+?>
 
 <?php
     $info_banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
@@ -92,6 +97,7 @@
             <?php 
             }
             ?>
+            <input class="send" page="depoimento" type="button" value="Adicionar">
             <br>
             <br>
 
@@ -111,17 +117,28 @@
                 <p><?php echo $work[$i]['titulo'] ?></p>
                 <p><?php echo substr($work[$i]['conteudo'],0,20) ?></p>
                 <a href="?page=editar-trabalho&&id=<?php echo $work[$i]['id'] ?>"><i class="fa-solid fa-pen">  Editar</i></a>
-                <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
+                <a href="?page=<?php echo $_GET['page'] ?>&&acao=delete&&id=<?php echo $work[$i]['id'] ?>"><i class="fa-regular fa-trash-can">  Excluir</i></a>
             </div>
             <?php  
                 }
             ?>
+            <input class="send" type="button" page="trabalho" value="Adicionar">
+            <br>
+            <br>
             <input type="submit" class="send" value="Enviar" name="send_3">
             </form>         
         </div>
     </div>
 
     <script src="<?php echo include_path_painel ?>script/jquery.js"></script>
+    <script>
+        $(
+            $('form input[type="button"]').click(function() {
+                var attr = $(this).attr('page');
+                location.href = "?page=adicionar&&name="+attr;
+            })
+        )
+    </script>
 </body>
 </html>
 
@@ -218,5 +235,4 @@ if(isset($_POST['send_1'])) {
         }
     }
 }
-
 ?>

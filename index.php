@@ -99,7 +99,7 @@
 
             ?>
             <div class="box-servicos">
-                <div class="icon-servicos" style="<?php echo include_path_painel.'upload/'.$work[$i]['icon'] ?>"></div>
+                <div class="icon-servicos" style="background-image: url(<?php echo include_path_painel.'upload/'.$work[$i]['icon'] ?>);"></div>
                 <h3><?php echo $work[$i]['titulo'] ?></h3>
                 <p><?php echo $work[$i]['conteudo'] ?></p>
                 <button><a href="">Ver mais!</a></button>
