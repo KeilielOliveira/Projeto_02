@@ -47,6 +47,9 @@ $page = explode('?',$url);
         ?>
    </div>
 </div><!--Display flex--> 
+
+<script src="script/jquery.js"></script>
+<script src="script/scsript.js"></script>
     
 </body>
 </html>
