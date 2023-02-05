@@ -13,20 +13,12 @@
 </head>
 <body>
 
-<?php
-    include 'config.php';
-    $logo = Painel::selecionarTabela(['tb'=>'tb_admin.editar_menu']);
-    $banner = Painel::selecionarTabela(['tb'=>'tb_admin.editar_banner']);
-    $sobre = Painel::selecionarTabela(['tb'=>'tb_admin.editar_sobre']);
-    $work = Painel::selecionarTudo('tb_admin.trabalho');
-
-?>
 
 
 <nav class="menu-desktop">
 
         <div class="logo">
-            <h2><?php echo $logo['logo_text'] ?></h2>
+            Logomarca
         </div><!--logo-->
         <ul class="ul-menu-desktop">
             <li><a href="">Home</a></li>
@@ -43,12 +35,12 @@
 </nav><!--menu-desktop-->
 <div class="clear"></div>
 
-<section class="banner" style="background-image: url(<?php echo include_path_painel.'upload/'. $banner['imagem'] ?>);">
+<section class="banner" style="background-image: url(painel/upload/63d265753768e.jpg);">
         <div class="bg-cover">
             <div class="container">
                 <div class="content-banner">
-                    <h2><?php echo $banner['titulo'] ?></h2>
-                    <p><?php echo $banner['conteudo'] ?></p>
+                    <h2>titulo de exemplo</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac blandit nisl, in tristique dolor. Phasellus sodales mollis consequat. Integer ut quam commodo, convallis lorem interdum, egestas mi. Nam magna eros, fermentum vitae volutpat sed, suscipit</p>
                     <div class="form-banner">
                         <form action="" class="banner">
                             <input type="email" name="email" id="" required placeholder="E-mail">
@@ -63,24 +55,25 @@
 <section class="sobre">
     <div class="container">
         <div class="content-sobre-description">
-            <p><?php echo $sobre['primeiro_texto'] ?></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac blandit nisl, in tristique dolor. Phasellus sodales mollis consequat. Integer ut quam commodo, convallis lorem interdum, egestas mi. Nam magna eros, fermentum vitae volutpat sed, suscipit faucibus enim. Vivamus quis massa blandit, consequat tellus ut, mattis turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
         </div><!--content-sobre-description--> 
         <div class="content-sobre">
             <div class="box-1">    
                 <div class="text-content-box-1">
-                <h2><?php echo $sobre['segundo_texto'] ?></p>
+                <h2> Integer in nulla eget justo lobortis auctor id non tellus. Vestibulum id leo id urna iaculis egestas. Nulla facilisi. Mauris at accumsan nulla. Phasellus fringilla, eros vitae hendrerit pharetra, risus ante blandit velit, eu scelerisque lectus diam sed risus. Pellentesque quis sem dui. Cras dignissim sapien nec diam molestie, quis mollis augue ornare. Nulla feugiat semper mi, vitae ullamcorper ligula consequat id. Vestibulum non dolor eget eros laoreet bibendum congue sed nisl.</p>
                 </div><!--text-content-box-1--> 
-                <div class="box-1-img"><img class="box-1-img" src="<?php echo include_path_painel.'upload/'. $sobre['imagem_do_segundo_texto'] ?>" alt="">
+                <div class="box-1-img"><img class="box-1-img" src="painel/upload/63d16c35cf65b.jpg" alt="">
             </div><!--box-1-img-->     
             </div><!--box-1--> 
             <div class="clear"></div>
             <div class="box-2">
-                <div class="box-2-img" style="background-image: url(<?php echo include_path_painel.'upload/'. $sobre['imagem_banner'] ?>);">               
+                <div class="box-2-img" style="background-image: url(painel/upload/63d16c35cfa1d.png);">               
                 </div><!--box-2-img--> 
                 <div class="depoimento">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis similique incidunt quidem cumque nobis qui voluptatem repudiandae deserunt nisi id voluptatibus aspernatur ipsum placeat, labore consectetur, quae ipsam amet totam?</p>
                     <h3>Kennedy Gomes</h3>
                 </div><!--depoimento--> 
+                
             </div><!--box-2--> 
         </div><!--content-sobre-->
         
@@ -90,23 +83,29 @@
 
 <section class="servicos">
     <div class="container">
-        <h3><?php echo $sobre['titulo_secao_trabalho'] ?></h3>
+        <h3>Diferenciais</h3>
         <div class="icon-arrow"></div>
         <div class="section-servicos">
-            <?php  
-            $q = count($work);
-            for ($i=0; $i < $q; $i++) { 
-
-            ?>
             <div class="box-servicos">
-                <div class="icon-servicos" style="background-image: url(<?php echo include_path_painel.'upload/'.$work[$i]['icon'] ?>);"></div>
-                <h3><?php echo $work[$i]['titulo'] ?></h3>
-                <p><?php echo $work[$i]['conteudo'] ?></p>
-                <button><a href="">Ver mais!</a></button>
-            </div><!--box-servicos-->
-            <?php 
-            }
-            ?>         
+                <div class="icon-servicos" style="background-image: url(painel/upload/63d3b9a127001.png);"></div>
+                <h3>lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repu</p>
+                <button><a href="#">Ver mais!</a></button>
+            </div><!--box-servicos-->  
+
+            <div class="box-servicos">
+                <div class="icon-servicos" style="background-image: url(painel/upload/63d3b9a127001.png);"></div>
+                <h3>lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repu</p>
+                <button><a href="#">Ver mais!</a></button>
+            </div><!--box-servicos-->  
+
+            <div class="box-servicos">
+                <div class="icon-servicos" style="background-image: url(painel/upload/63d3b9a127001.png);"></div>
+                <h3>lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae quod in nam ab nihil, quo veritatis nemo vero nostrum quasi atque consectetur? Hic voluptate eos nemo deserunt, tempora numquam repu</p>
+                <button><a href="#">Ver mais!</a></button>
+            </div><!--box-servicos-->  
         </div><!--section-servicos--> 
     </div>
 </section><!--servicos--> 

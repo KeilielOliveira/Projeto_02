@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/editar-home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9513630920.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle</title>
+</head>
+<body>
+<div class="flex">
+    <section class="controller">
+        <div class="header-top">
+            <h2>Painel</h2>
+        </div>
+        <div class="options">
+            <div class="op-sec">
+                <h2>Home</h2>
+                <ul>
+                    <li><a href="pages/editar-home.php">Editar Home</a></li>
+                </ul>
+                <a href="#">loggout</a>
+            </div><!--op-sec--> 
+        </div><!--options--> 
+    </section>
+
+    <header class="header-painel">
+        <i class="fa-solid fa-bars icon"></i>
+        <p>contato.sac@gmail.com</p>
+    </header>
+    <div class="clear"></div>
+    <div class="page">
+
+            
+    <header>
+        <h2>Bem vindo a pagina de <b>edição</b> da home!</h2>
+    </header>
+
+
+    <div class="box-edit">
+        <div class="title">
+            <i class="fa-solid fa-pen"></i>
+            <h3>Editar Header</h3>
+        </div>
+        <div class="content">
+            <form class="send-form" method="post">
+                <label>Logomarca</label>
+                <input type="text" name="logo_text" placeholder="Logomarca em forma de Texto...">
+                <input type="file" name="logo_image">
+                <input type="hidden" name="logo_image_default" value="logomarca_image">
+
+                <input type="submit" value="Enviar" class="send" name="send_1">
+            </form> 
+        </div>
+    </div>
+
+    <div class="box-edit">
+        <div class="title">
+            <i class="fa-solid fa-pen"></i>
+            <h3>Editar Banner</h3>
+        </div>
+        <div class="content">
+            <form class="send-form" method="post" enctype="multipart/form-data">
+                <label>Imagem do banner</label>
+                <input type="file" name="image">
+                <input type="hidden" name="last_image" value="63d265753768e.jpg">
+                <label>Titulo da chamada</label>
+                <input type="text" name="title_banner" value="titulo de exemplo?>">
+                <label>Conteudo da chamada</label>
+                <input type="text" name="content_banner" value="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, at nobis! Quaerat neque odit enim aliquid assumenda labore ea aperiam voluptatem maiores eos, veritatis minima? Dolores nemo ad hic rerum?">
+                <input type="submit" value="Enviar" class="send" name="send_2">
+            </form>
+        </div>
+        
+    </div>
+
+    <div class="box-edit">
+        <div class="title">
+            <i class="fa-solid fa-pen"></i>
+            <h3>Editar Sobre</h3>
+        </div>
+        <div class="content">
+            <form class="send-form" method="post" enctype="multipart/form-data">
+                <label>Texto inicial do sobre</label>
+                <textarea name="first_text_sobre">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, at nobis! Quaerat neque odit enim aliquid assumenda labore ea aperiam voluptatem maiores eos, veritatis minima? Dolores nemo ad hic rerum?</textarea>
+                <label>Texto é imagem do sobre</label>
+                <textarea name="second_text_sobre">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem voluptatem nemo explicabo. Maiores saepe, voluptatibus, vel magni voluptatem veritatis itaque, quo odio ea obcaecati ex qui impedit nesciunt suscipit tempore.</textarea>
+                <input type="file" name="first_image_sobre">
+                <input type="hidden" name="last_first_image" value="<63d16c35cf65b.jpg">
+                <label>Banner do sobre</label>
+                <input type="file" name="image_banner_sobre">
+                <input type="hidden" name="last_banner_image" value="63d16c35cfa1d.png">
+
+            <br>
+            <br>
+            <h3>Depoimentos</h3>
+            <br>
+            <div class="item">
+                <p>Kennedy Oliveira</p>
+                <p>lorem ipsum</p>
+                <a href="#"><i class="fa-solid fa-pen">  Editar</i></a>
+                <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
+            </div>
+            <div class="item">
+                <p>Kennedy Oliveira</p>
+                <p>lorem ipsum</p>
+                <a href="#"><i class="fa-solid fa-pen">  Editar</i></a>
+                <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
+            </div>
+            <div class="item">
+                <p>Kennedy Oliveira</p>
+                <p>lorem ipsum</p>
+                <a href="#"><i class="fa-solid fa-pen">  Editar</i></a>
+                <a href=""><i class="fa-regular fa-trash-can">  Excluir</i></a>
+            </div>
+            <input class="send" page="depoimento" type="button" value="Adicionar">
+            <br>
+            <br>
+
+            <label>Titulo da seçao trabalho</label>
+            <input type="text" name="title_work" value="Diferenciais">
+
+            <br>
+            <br>
+            <h3>Serviços</h3>
+            <br>
+
+            <div class="item">
+                <p>lorem ipsum</p>
+                <p>lorem ipsum</p>
+                <a href="#"><i class="fa-solid fa-pen">  Editar</i></a>
+                <a href="#"><i class="fa-regular fa-trash-can">  Excluir</i></a>
+            </div>
+            <input class="send" type="button" page="trabalho" value="Adicionar">
+            <br>
+            <br>
+            <input type="submit" class="send" value="Enviar" name="send_3">
+            </form>         
+        </div>
+    </div>
+
+    <script src="script/jquery.js"></script>
+    <script>
+        $(
+            $('form input[type="button"]').click(function() {
+                var attr = $(this).attr('page');
+                location.href = "?page=adicionar&&name="+attr;
+            })
+        )
+    </script>
+
+
+   </div>
+</div><!--Display flex--> 
+
+<script src="script/jquery.js"></script>
+<script src="script/scsript.js"></script>
+    
+</body>
+</html>
