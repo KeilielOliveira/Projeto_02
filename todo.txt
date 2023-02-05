@@ -1,2 +1,0 @@
-Lista:
-1° -> Redirect na pagina no painel para atualizar os itens.
