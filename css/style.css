@@ -27,7 +27,9 @@ nav.menu-desktop {
   background-color: #0f0f0f;
   padding: 15px 30px; }
   nav.menu-desktop div.logo {
-    float: left; }
+    float: left;
+    font-size: 32px;
+    color: #ccc; }
     nav.menu-desktop div.logo h2 {
       cursor: pointer;
       margin-left: 8px;
@@ -81,7 +83,6 @@ nav.menu-desktop {
       color: #ffff; }
 
 section.banner {
-  background-image: url("../images/bg_1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 80%;
@@ -134,14 +135,16 @@ section.banner {
 section.sobre {
   background-color: #d3f2fa; }
   section.sobre div.content-sobre-description p {
+    font-weight: italic;
     max-width: 600px;
     text-align: center;
     position: relative;
     left: 50%;
+    color: #4b4b4b;
     transform: translateX(-50%);
     padding-top: 30px;
     font-size: 16px;
-    line-height: 20px; }
+    line-height: 24px; }
   section.sobre div.content-sobre {
     margin-top: 100px;
     max-width: 80%;
@@ -171,7 +174,6 @@ section.sobre {
       margin-top: 40px;
       width: 100%; }
       section.sobre div.content-sobre div.box-2 div.box-2-img {
-        background-image: url("../images/bg_2.png");
         background-size: cover;
         width: 100%;
         height: 500px; }
@@ -223,7 +225,6 @@ section.servicos {
       border: 2px solid #3f4a4a;
       box-shadow: 4px 5px 10px 4px rgba(0, 0, 0, 0.79); }
       section.servicos div.section-servicos div.box-servicos div.icon-servicos {
-        background-image: url("../images/css-3_icon.png");
         width: 80px;
         height: 80px;
         background-size: cover;
@@ -388,7 +389,7 @@ footer {
     top: 0;
     left: 0; }
   section.sobre div.content-sobre div.box-2 div.box-2-img {
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     height: 200px; }
 
@@ -412,6 +413,22 @@ footer {
 
   section.servicos div.section-servicos div.box-servicos {
     width: 80%;
-    margin-left: 10%; } }
+    margin-left: 10%; }
+
+  section.contato div.container form {
+    width: 96%; } }
+@media screen and (max-width: 500px) {
+  section.sobre div.content-sobre div.box-2 div.box-2-img {
+    background-size: contain; } }
+@media screen and (max-width: 400px) {
+  section.banner div.content-banner {
+    padding-top: 50px; }
+    section.banner div.content-banner p {
+      font-size: 16px; }
+
+  section.sobre div.content-sobre-description {
+    padding-top: 60px;
+    width: 100%;
+    padding: 0 2%; } }
 
 /*# sourceMappingURL=style.css.map */

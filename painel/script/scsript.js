@@ -1,4 +1,9 @@
-menu();
+if($(window).innerWidth() > 648) {
+    menu();
+}else {
+    menuMobile();
+}
+
 let count = 0;
 function menu() {
     $('i.icon').click(function() {
@@ -20,9 +25,34 @@ function menu() {
     })
 }
 
+function menuMobile() {
+    $('i.icon').click(function() {
+        $(this).attr('res','hidden')
+        let page = $('.page');
+        let header = $('.header-painel');
+        let menu = $('.controller');
+        if(count == 0) {
+            page.css('width','60%').css('left','40%');
+            header.css('width','60%').css('left','40%');
+            menu.css('left','0')
+            count++;
+        }else if(count > 0) {
+            page.css('width','100%').css('left','0');
+            header.css('width','100%').css('left','0');
+            menu.css('left','-40%')
+            count = 0;
+        }
+    })
+}
+
 $(window).on('resize',function() {
     if($(window).innerWidth() == 900) {
         location.reload();
+    }
+    if($(window).innerWidth() > 648) {
+        menu();
+    }else {
+        menuMobile();
     }
 })
 

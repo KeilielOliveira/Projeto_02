@@ -29,7 +29,6 @@ html,body {
 /*CONTROLADOR DO MENU*/
 
 section.controller {
-    max-width: 20%;
     width: 20%;
     background-color: #cdcecd;
     height: 100%;
@@ -142,4 +141,11 @@ i.icon {
         display: inline-block;
     }
 
+}
+
+@media screen and (max-width: 648px) {
+    section.controller {
+        width: 40%;
+        left: -40%;
+    }
 }

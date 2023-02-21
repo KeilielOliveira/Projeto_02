@@ -27,6 +27,8 @@ nav.menu-desktop
     padding: 15px 30px
     div.logo
         float: left
+        font-size: 32px
+        color: #ccc
         h2
             cursor: pointer
             margin-left: 8px
@@ -140,14 +142,16 @@ section.sobre
     background-color: #d3f2fa
     div.content-sobre-description
         p
+            font-weight: italic
             max-width: 600px
             text-align: center
             position: relative
             left: 50%
+            color: #4b4b4b
             transform: translateX(-50%)
             padding-top: 30px
             font-size: 16px
-            line-height: 20px
+            line-height: 24px
     div.content-sobre
         margin-top: 100px
         max-width: 80%
@@ -404,7 +408,7 @@ footer
                     top: 0
                     left: 0
                 div.box-2-img 
-                    background-size: contain
+                    background-size: cover
                     background-repeat: no-repeat
                     height: 200px
         
@@ -439,6 +443,31 @@ footer
             div.box-servicos
                 width: 80%
                 margin-left: 10%
+
+    section.contato 
+        div.container
+            form 
+                width: 96%
+
+@media screen and (max-width: 500px)
+    section.sobre 
+        div.content-sobre 
+            div.box-2 
+                div.box-2-img 
+                    background-size: contain
+
+@media screen and (max-width: 400px)
+    section.banner 
+        div.content-banner 
+            padding-top: 50px
+            p
+                font-size: 16px
+    section.sobre
+        div.content-sobre-description
+            padding-top: 60px
+            width: 100%
+            padding: 0 2%
+
                     
                     
                      
